@@ -3,6 +3,7 @@ import Message from "../components/Message";
 import { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import Link from "next/link";
 
 export default function Home() {
   //state dari post
@@ -29,7 +30,18 @@ export default function Home() {
         <h2>Lihat bacotan orang orang ini</h2>
 
         {allPosts.map((post) => {
-          return <Message {...post} key={post.id}></Message>;
+          return (
+            <Message {...post} key={post.id}>
+              <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
+                <button>
+                  {post.comments?.length > 0
+                    ? post.comments?.length
+                    : "Belum ada"}{" "}
+                  Komentar
+                </button>
+              </Link>
+            </Message>
+          );
         })}
       </div>
     </>

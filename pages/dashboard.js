@@ -10,6 +10,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import Link from "next/link";
 import Message from "../components/Message";
 import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
@@ -56,10 +57,12 @@ export default function Dashboard() {
                 >
                   <BsTrash2Fill className="text-2xl" /> Hapus
                 </button>
-                <button className="text-blue-500 bg-slate-100 rounded-lg flex items-center justify-center gap-2 py-2 px-2  text-small ">
-                  <AiFillEdit className="text-2xl" />
-                  Edit
-                </button>
+                <Link href={{ pathname: "/post", query: post }}>
+                  <button className="text-blue-500 bg-slate-100 rounded-lg flex items-center justify-center gap-2 py-2 px-2  text-small ">
+                    <AiFillEdit className="text-2xl" />
+                    Edit
+                  </button>
+                </Link>
               </div>
             </Message>
           );
