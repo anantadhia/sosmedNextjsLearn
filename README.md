@@ -1,4 +1,4 @@
-## project to learn Firebase, NextJs, and Tailwindcss
+## project to learn Firebase, NextJs, and Tailwindcss, also of course CRUD
 
 
 
