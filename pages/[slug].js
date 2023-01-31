@@ -83,6 +83,7 @@ function Details() {
                 <h2>{message.userName}</h2>
               </div>
               <h2>{message.message}</h2>
+              <h2>{new Date(message.time.seconds * 1000).toLocaleString()}</h2>
             </div>
           ))}
         </div>
