@@ -6,9 +6,11 @@ export default function Nav() {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <nav className="flex justify-between items-center py-10">
+    <nav className="flex bg-blue-200 shadow-md rounded-3xl justify-between  items-center p-5">
       <Link href="/">
-        <button className="text-lg font-medium"> Create</button>
+        <button className="text-2xl font-medium">
+          Social Media Kayak Twitter Tapi Boong
+        </button>
       </Link>
       <ul className="flex items-center gap-10">
         {!user && (
