@@ -55,6 +55,11 @@ function Details() {
     getComments();
   }, [router.isReady]);
 
+  const pencetEnter = (event) => {
+    if (event.key === "Enter") {
+      submitMessage();
+    }
+  };
   return (
     <div>
       <Message {...routeData}></Message>
@@ -62,14 +67,15 @@ function Details() {
         <div className="flex">
           <input
             onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={pencetEnter}
             type="text"
             value={message}
             placeholder="Diobrolin disini aja"
-            className="bg-gray-700 w-full p-2 text-white text-sm"
+            className="bg-slate-900 w-full p-2 text-white text-sm"
           />
           <button
             onClick={submitMessage}
-            className="bg-blue-500 text-white py-2 px-5 rounded-lg"
+            className="bg-blue-500 text-white py-2 px-5 "
           >
             Submit
           </button>
@@ -83,7 +89,9 @@ function Details() {
                 <h2>{message.userName}</h2>
               </div>
               <h2>{message.message}</h2>
-              <h2>{new Date(message.time.seconds * 1000).toLocaleString()}</h2>
+              <h2 className="text-xs">
+                {new Date(message.time.seconds * 1000).toLocaleString()}
+              </h2>
             </div>
           ))}
         </div>
