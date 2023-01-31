@@ -14,6 +14,7 @@ import Link from "next/link";
 import Message from "../components/Message";
 import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
   const route = useRouter();
@@ -45,28 +46,36 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Postinganmu</h1>
+      <h1 className="py-5 text-xl font-bold">Postinganmu</h1>
       <div>
-        {posts.map((post) => {
-          return (
-            <Message {...post} key={post.id}>
-              <div className="flex gap-4 ">
-                <button
-                  onClick={() => deletePost(post.id)}
-                  className="text-red-500 bg-slate-100 rounded-lg flex items-center justify-center gap-2 py-2 px-2 text-small "
-                >
-                  <BsTrash2Fill className="text-2xl" /> Hapus
-                </button>
-                <Link href={{ pathname: "/post", query: post }}>
-                  <button className="text-blue-500 bg-slate-100 rounded-lg flex items-center justify-center gap-2 py-2 px-2  text-small ">
-                    <AiFillEdit className="text-2xl" />
-                    Edit
+        {posts.length === 0 ? (
+          <div>
+            <h1 className="bg-red-300 p-10 max-w-lg font-bold text-red-900 items-center justify-center flex rounded-lg">
+              Belum ada postingan
+            </h1>
+          </div>
+        ) : (
+          posts.map((post) => {
+            return (
+              <Message {...post} key={post.id}>
+                <div className="flex gap-4 ">
+                  <button
+                    onClick={() => deletePost(post.id)}
+                    className="text-red-500 bg-slate-100 rounded-lg flex items-center justify-center gap-2 py-2 px-2 text-small "
+                  >
+                    <BsTrash2Fill className="text-2xl" /> Hapus
                   </button>
-                </Link>
-              </div>
-            </Message>
-          );
-        })}
+                  <Link href={{ pathname: "/post", query: post }}>
+                    <button className="text-blue-500 bg-slate-100 rounded-lg flex items-center justify-center gap-2 py-2 px-2  text-small ">
+                      <AiFillEdit className="text-2xl" />
+                      Edit
+                    </button>
+                  </Link>
+                </div>
+              </Message>
+            );
+          })
+        )}
       </div>
       <button
         className="font-medium text-white bg-blue-500 rounded-lg my-5 py-2 px-4"
