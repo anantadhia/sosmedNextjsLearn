@@ -33,7 +33,7 @@ export default function Home() {
           return (
             <Message {...post} key={post.id}>
               <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
-                <button>
+                <button className="p-1 my-5 hover:scale-90 transition-all hover:bg-blue-700 hover:text-white bg-blue-400 rounded-lg">
                   {post.comments?.length > 0
                     ? post.comments?.length
                     : "Belum ada"}{" "}

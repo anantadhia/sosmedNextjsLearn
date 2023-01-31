@@ -8,8 +8,8 @@ export default function Nav() {
   return (
     <nav className="flex bg-gradient-to-l from-indigo-500 shadow-md rounded-3xl justify-between  items-center p-5">
       <Link href="/">
-        <button className="text-xl font-medium">
-          Social Media Kayak Twitter Tapi Boong
+        <button className="text-sm  font-medium ">
+          Kayak Twitter Tapi Boong
         </button>
       </Link>
       <ul className="flex items-center gap-10">
